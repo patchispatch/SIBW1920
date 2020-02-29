@@ -1,50 +1,63 @@
-@import url('https://fonts.googleapis.com/css?family=Lacquer&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
 
 html {
-  background-color: #ffc0ee;
-}
-
-body {
-  width: 
-  margin: 0 auto;
-  background-color: #ffefd8;
-  padding: 0 20px 20px 20px;
-  border: 5px solid #fda7e6;
-}
-
-h1 {
-  margin: 0;
-  padding: 20px 0;    
-  color: #ff74da;
-  text-shadow: 3px 3px 1px #fda7e6;
-}
-
-img {
-  display: block;
-  margin: 0 auto;
-}
-
-h2 {
-    font-size: 20px;
-}
-
-link {
-    color: #3e8bc4;
+    background-color: #fff7eb;
 }
 
 .header {
-  margin: 0;
-  padding: 0 5em;
-  text-align: center;
-  background: #fda7e6;
-  color: white;
-  font-size: 30px;
+    width: 100%;
+    height: 80px;
+    background-color: #101010;
 }
 
-.title {
-    margin: 0;
-    padding: 0 auto;
-    color: #d8435a;
-    font-size: 35px;
-    font-family: "Lacquer";
+.inner-header {
+    width: 90%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.logo-container {
+    height: 100%;
+    display: table;
+    float: left;
+}
+
+.logo-container h1 {
+    color: #fff7eb;
+    height:100%;
+    display: table-cell;
+    vertical-align: middle;
+    font-family: "Bowlby One SC";
+    font-size: 40px;
+}
+
+.navigation {
+    float: right;
+    height: 100%;
+}
+
+.navigation a {
+    height: 100%;
+    display: table;
+    float: left;
+    padding: 0px 20px;
+}
+
+.navigation a:last-child {
+    padding-right: 0;
+}
+
+.navigation a li {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    color: white;
+    font-family: "Open Sans";
+    font-size: 20px;
 }
