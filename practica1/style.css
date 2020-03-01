@@ -4,6 +4,7 @@
     list-style: none;
     text-decoration: none;
     font-family: "Open Sans";
+    box-sizing: border-box;
 }
 
 html {
@@ -87,11 +88,24 @@ html {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2em;
-    grid-auto-rows: minmax(1fr, auto);
+    grid-auto-rows: 1fr;
 }
 
-.event-grid div {
-    background: #eadecd;
-    padding: 1em;
-    
+.grid-body .event {
+    background: #101010;
+    position: relative;
+}
+
+.event img {
+    max-width: 100%;
+    max-height: auto;
+}
+
+.event .btn {
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: block;
 }
