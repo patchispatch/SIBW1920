@@ -135,10 +135,11 @@ header {
 
 #container {
     float: right;
+    width: 30%;
 }
 
 #container img {
-    width: 40%;
+    width: 100%;
     height: auto;
     display: block;
 }
