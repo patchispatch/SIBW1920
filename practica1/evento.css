@@ -187,3 +187,22 @@ footer {
     display: table-cell;
     vertical-align: middle;
 }
+
+.sidepanel{
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index = 1;
+    top: 0;
+    right: 0;
+    background-color: #101010;
+    color: #fff7eb;
+    overflow-x: hidden;
+    padding: 2em;
+    padding-top: 6em;
+    transition: 0.5s;
+}
+
+.sidepanel h3 {
+    font-size: 32px;
+}
