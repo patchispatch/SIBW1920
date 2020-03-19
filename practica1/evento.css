@@ -189,6 +189,7 @@ footer {
 }
 
 .sidepanel{
+    display: none;
     height: 100%;
     width: 25%;
     position: fixed;

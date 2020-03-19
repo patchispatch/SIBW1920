@@ -150,14 +150,18 @@
             </div>
         </div>
         
-        <h3>Publica un comentario</h3>
-        <form action="portada.html">
-            <label for="author">Autor:</label><br>
-            <input type="text" id="author" name="author"><br>
-            <label for="comment">Comentario:</label><br>
-            <input type="text" id="comment" name="comment">
-            <input type="submit" value="Publicar">
-        </form>
+        <div id="comments-form">
+            <h3>Publica un comentario</h3>
+            <form id="postcomment" action="javascript:void(0);" onsubmit="validateForm()">
+                <label for="author">Autor:</label><br>
+                <input type="text" id="author" name="author" required><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email" required><br>           
+                <label for="comment">Comentario:</label><br>
+                <textarea name="comment" form="postcomment"></textarea>
+                <input type="submit" value="Publicar">
+            </form>
+        </div>
     </div>
 
     
