@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Open+Sans&display=swap" rel="stylesheet"> 
     <link href="evento.css" rel="stylesheet" type="text/css">
+    <script src="comentarios.js"></script>
     <title>Lucha.</title>
   </head>
     
@@ -126,11 +127,29 @@
             <a href="evento_imprimir.html">
                 <img class="social-button" src="img/Print.png">
             </a> 
+            
+            <img class="social-button" src="img/comment.png" onclick="openNav()">
         </div>
     </div>
       
     <!-- SECCIÓN DE COMENTARIOS -->
     <div id="comments-section" class="sidepanel">
+        <div id="comments-title" class="sidepanel-title">
+            <img class="closebtn" src="img/close.png" onclick="closeNav()">
+            <h3>Comentarios</h3>
+        </div>
+        
+        <div id="comments" class="comments">
+            <div class="comment">
+                <h4>Paco Fiestas - 04/03, 17:00</h4>
+                <p>Me apunto si luego jugamos al Tekken 3</p>
+            </div>
+            <div class="comment">
+                <h4>Sergio Ortuño - 16/03, 20:13</h4>
+                <p>Típico chaval de instituto</p>
+            </div>
+        </div>
+        
         <h3>Publica un comentario</h3>
         <form action="portada.html">
             <label for="author">Autor:</label><br>
@@ -139,13 +158,6 @@
             <input type="text" id="comment" name="comment">
             <input type="submit" value="Publicar">
         </form>
-        
-        <div id="comments" class="comments">
-            <div class="comment">
-                A
-            </div>
-        </div>
-        
     </div>
 
     
