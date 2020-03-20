@@ -1,6 +1,6 @@
 // Sección de comentarios
 
-/* Set the width of the sidebar to 250px (show it) */
+/* Set the width of the sidebar to 25% (show it) */
 function openNav() {
     document.getElementById("comments-section").style.display = "block";
 }
@@ -14,11 +14,11 @@ function addComment(author, email, com) {
     var cs = document.getElementById("comments");
     
     // Create the comment div
-    var comment = document.createElement("DIV");
+    var comment = document.createElement("div");
     comment.className = "comment";
     
     // Append name and current date as title
-    var title = document.createElement("H4");
+    var title = document.createElement("h4");
     var d = new Date();
     var t = author + " - " + d.getDate() + "/" + d.getMonth() + " , " + d.getHours() + ":" + d.getMinutes();
     title.innerHTML = t;
@@ -45,10 +45,20 @@ function validateForm() {
     
     // Check email is correct
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-        alert("You have entered an invalid email address!")
-        return (false)
+        alert("Debes proporcionar una dirección de correo electrónico válida.")
+        return false;
     }
     else {
         addComment(author, email, comment);
+    }
+}
+
+function liveCensorship(id) {
+    var text = document.getElementById(id);
+    var filter = ["macabeo", "cernícalo", "tontopollas", "merluzo", "rufián", "truhán", "meretriz", "Sonic4", "tragaldabas", "Jordi"];
+    
+    for(var word of filter) {
+        text.value = text.value.replace(word, "*".repeat(word.length));
+        console.log(word);
     }
 }
