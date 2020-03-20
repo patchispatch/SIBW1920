@@ -59,6 +59,5 @@ function liveCensorship(id) {
     
     for(var word of filter) {
         text.value = text.value.replace(word, "*".repeat(word.length));
-        console.log(word);
     }
 }
