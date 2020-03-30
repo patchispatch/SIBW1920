@@ -190,3 +190,7 @@ footer {
     display: table-cell;
     vertical-align: middle;
 }
+
+.sidepanel{
+    display: none;
+}

@@ -2,17 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Open+Sans&display=swap" rel="stylesheet"> 
-    <link href="portada.css" rel="stylesheet" type="text/css">
-    <title>Lucha.</title>
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Open+Sans&display=swap" rel="stylesheet">
+
+    {% block css %}
+    {% endblock %}
+
+    {% block script %}
+    {% endblock %}
+
+    <title>
+        {% block title %}  
+        Lucha - {{ pagename }}
+        {% endblock %}
+    </title>
+
   </head>
     
   <body>
     <!-- HEADER -->
+    {% block header %}
     <header>
         <div class="inner-header">
             <!-- LOGO -->
-            <a href="portada.html">
+            <a href="../php/index.php">
                 <div class="logo-container">
                      <h1>Lucha.</h1>
                 </div>
@@ -26,9 +38,11 @@
             </ul>
         </div>
     </header>
+    {% endblock %}
     
     <div class="grid-body">
         <!-- COLUMNA LATERAL -->
+        {% block sidebar %}
         <div class="sidebar-menu">
         <div>
                 <h3><b>Lucha más. Pásalo bien.</b></h3>
@@ -52,61 +66,15 @@
                 </ul>           
             </div>
         </div>
+        {% endblock %}
 
-        <!-- GRID EVENTOS -->
-        <div class="event-grid">
-            <div class="event">
-                <div class="image-container">
-                    <img src="img/boxingym.jpg">
-                </div>
-                <div class="text-btn">
-                    <a class="btn">Entrenamiento de boxeo</a>
-                </div>
-            </div>
-            <div class="event">
-                <div class="image-container">
-                    <img src="img/muaythai.jpg">
-                </div>
-                <div class="text-btn">
-                    <a class="btn">Torneo de Muay Thai</a>
-                </div>
-            </div>
-            <div class="event">
-                <div class="image-container">
-                    <img src="img/softcombat.jpg">
-                </div>
-                <div class="text-btn">
-                    <a class="btn">Duelo de softcombat</a>
-                </div>
-            </div>
-            <div class="event">
-                <div class="image-container">
-                    <img src="img/boxing2.jpg">
-                </div>
-                <div class="text-btn">
-                    <a class="btn">Busco compañeros de pegarse</a>
-                </div>
-            </div>
-            <div class="event">
-                <div class="image-container">
-                    <img src="img/estrangulamiento.jpg">
-                </div>
-                <div class="text-btn">
-                    <a class="btn">Estrangulamiento</a>
-                </div>
-            </div>
-            <div class="event">
-                <div class="image-container">
-                    <img src="img/sf2.png">
-                </div>
-                <div class="text-btn">
-                    <a class="btn" href="evento.html">AAAAAAAAAH</a>
-                </div>
-            </div>
-        </div>
+        <!-- CENTRO DE LA PÁGINA-->
+        {% block center %}
+        {% endblock %}
     </div>
     
     <!-- FOOTER -->
+    {% block footer %}
     <footer>
         <div class="inner-footer">            
             <!-- COSAS -->
@@ -116,7 +84,6 @@
             <span>Todos los derechos reservados.</span>
         </div>
     </footer>
-
-  </body>
-    
+    {% endblock %}
+  </body>  
 </html>
