@@ -5,10 +5,16 @@
     $twig = new \Twig\Environment($loader);
 
     // Page name
-    $pagename = "AAAAAAAAAH";
+    $title = "AAAAAAAAAH";
+    $author = "";
+    $date = "";
+    $content = "";
 
     // Render
     echo $twig->render('evento.html', [
-        'pagename' => $pagename,
+        'title' => $title,
+        'author' => $author,
+        'date' => $date,
+        'content' => $content,
     ]);
 ?>
