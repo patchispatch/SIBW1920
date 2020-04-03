@@ -14,6 +14,6 @@
         include("scripts/evento.php");
     }
     else {
-        include("scripts/principal.php");
+        include("scripts/portada.php");
     }
 ?>

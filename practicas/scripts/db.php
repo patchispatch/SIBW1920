@@ -28,7 +28,7 @@ function all_events() {
     $conn = connect();
         
     // Prepare query
-    $stmt = "SELECT titulo, portada FROM eventos";
+    $stmt = "SELECT id, titulo, portada FROM eventos";
 
     // Send query and close connection
     $result = query($conn, $stmt);
