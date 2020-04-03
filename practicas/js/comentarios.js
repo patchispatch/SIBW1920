@@ -1,5 +1,9 @@
 // Sección de comentarios
 
+// Palabras prohibidas
+var banned_words = [];
+getBannedWords();
+
 /* Set the width of the sidebar to 25% (show it) */
 function openNav() {
     document.getElementById("comments-section").style.display = "block";
@@ -53,11 +57,32 @@ function validateForm() {
     }
 }
 
+function getBannedWords() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            banned_json = JSON.parse(this.responseText);
+
+            // Convert into array of strings
+            for(var obj of banned_json) {
+                banned_words.push(obj["word"]);
+            }
+        }
+    };
+
+    xhttp.open("GET", "http://localhost/bannedWords.php", true);
+    xhttp.send();
+}
+
 function liveCensorship(id) {
     var text = document.getElementById(id);
-    var filter = ["macabeo", "cernícalo", "tontopollas", "merluzo", "rufián", "truhán", "meretriz", "Sonic4", "tragaldabas", "Jordi"];
-    
+    var filter = banned_words;
+
+    console.log(filter);
+
     for(var word of filter) {
+
         text.value = text.value.replace(word, "*".repeat(word.length));
     }
 }
