@@ -6,53 +6,15 @@
 
 {% block center %}
 <div class="event-grid">
+    {% for event in events %}
     <div class="event">
         <div class="image-container">
-            <img src="../img/boxingym.jpg">
+            <img src={{ event.portada }}>
         </div>
         <div class="text-btn">
-            <a class="btn">Entrenamiento de boxeo</a>
+            <a class="btn">{{ event.titulo }}</a>
         </div>
     </div>
-    <div class="event">
-        <div class="image-container">
-            <img src="../img/muaythai.jpg">
-        </div>
-        <div class="text-btn">
-            <a class="btn">Torneo de Muay Thai</a>
-        </div>
-    </div>
-    <div class="event">
-        <div class="image-container">
-            <img src="../img/softcombat.jpg">
-        </div>
-        <div class="text-btn">
-            <a class="btn">Duelo de softcombat</a>
-        </div>
-    </div>
-    <div class="event">
-        <div class="image-container">
-            <img src="../img/boxing2.jpg">
-        </div>
-        <div class="text-btn">
-            <a class="btn">Busco compañeros de pegarse</a>
-        </div>
-    </div>
-    <div class="event">
-        <div class="image-container">
-            <img src="../img/estrangulamiento.jpg">
-        </div>
-        <div class="text-btn">
-            <a class="btn">Estrangulamiento</a>
-        </div>
-    </div>
-    <div class="event">
-        <div class="image-container">
-            <img src="../img/sf2.png">
-        </div>
-        <div class="text-btn">
-            <a class="btn" href="../php/evento.php">AAAAAAAAAH</a>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}

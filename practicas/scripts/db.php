@@ -22,6 +22,25 @@ function query($connection, $query) {
     return $result;
 }
 
+// Returns all events title and cover
+function all_events() {
+    // Connect to the database
+    $conn = connect();
+        
+    // Prepare query
+    $stmt = "SELECT titulo, portada FROM eventos";
+
+    // Send query and close connection
+    $result = query($conn, $stmt);
+
+    // Parse result:
+    if($result->num_rows > 0) {
+        $row = $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    return $row; 
+}
+
 // Returns event data in an associative array
 function event_info($id) {
     // Connect to the database
