@@ -13,14 +13,12 @@
 <div class="event-page">
     <!-- FOTOS -->
     <div id="container">
-        <figure>
-            <img src="../img/vega1.jpg">
-            <figcaption> Vega derrotando a Ken.</figcaption>
-        </figure>
-        <figure>
-            <img src="../img/vega2.png">
-            <figcaption>El nombre japonés de Vega es Balrog.</figcaption>
-        </figure>
+        {% for image in images %}
+            <figure>
+                <img src={{ image.ruta }}>
+                <figcaption>{{ image.pie }}</figcaption>
+            </figure>
+        {% endfor %}
     </div>
     <!-- INFO DEL EVENTO -->
     <div class="event-description">

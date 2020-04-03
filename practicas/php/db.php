@@ -26,6 +26,7 @@ function query($connection, $query) {
 function event_info($id) {
     // Connect to the database
     $conn = connect();
+    
     // Prepare query
     $stmt = "SELECT * FROM eventos WHERE id=" . $id;
 
@@ -40,6 +41,23 @@ function event_info($id) {
     return $row;
 }
 
+// Returns event images route in an array
+function event_images($id) {
+    // Connect to database
+    $conn = connect();
 
+    // Prepare query
+    $stmt = "SELECT ruta, pie FROM imagenes WHERE evento=" . $id;
+
+    // Send query and close connection
+    $result = query($conn, $stmt);
+
+    // Parse result:
+    if($result->num_rows > 0) {
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    return $rows;
+}
 
 ?>
