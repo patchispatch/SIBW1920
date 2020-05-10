@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link href="../css/cpanel.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block sidebar %}
+<div class="sidebar-menu">
+    <h1>Panel de control</h1>
+    <br>
+    <ul>
+        <li><a href="/nuevo">Publicar evento</a></li>
+        <li><a>Listado de eventos</a></li>
+        <li><a>Listado de usuarios</a></li>
+        <li><a>Listado de comentarios</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block center %}
+<div class="cpanel-element">
+    {% block cpanel %}
+    <h1> Bienvenido al panel de control.</h1>
+    <br>
+    <p>Haz cosas y más cosas teniendo el control.</p>
+    {% endblock %}
+</div>
+{% endblock %}
+
+
+

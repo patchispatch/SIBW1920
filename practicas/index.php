@@ -13,6 +13,15 @@
     if(startsWith($uri, "/evento")) {
         include("scripts/evento.php");
     }
+    else if(startsWith($uri, "/cpanel")) {
+        include("scripts/cpanel.php");
+    }
+    else if(startsWith($uri, "/nuevo")) {
+        include("scripts/nuevo.php");
+    }
+    else if(startsWith($uri, "/subir-evento")) {
+        include("scripts/subir-evento.php");
+    }
     else {
         include("scripts/portada.php");
     }

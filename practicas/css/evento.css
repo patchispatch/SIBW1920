@@ -136,6 +136,7 @@ header {
 #container {
     float: right;
     width: 30%;
+    margin: 1em;
 }
 
 #container img {

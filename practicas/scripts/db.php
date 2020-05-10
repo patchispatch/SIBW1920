@@ -79,4 +79,25 @@ function event_images($id) {
     return $rows;
 }
 
+function new_event($title, $author, $event, $cover) {
+    // Connect to database
+    $conn = connect();
+
+    // Prepare query
+    $date = date("Y-m-d H:i:s");
+    $stmt = $conn->prepare("INSERT INTO eventos (titulo, autor, fecha, portada, texto) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $title, $author, $date, $cover, $event);
+
+    // Send query
+    if ($stmt->execute()) {
+        echo("Ha colao");
+    }
+    else {
+        echo("No ha colao");
+    }
+
+    // Close connection
+    $conn->close();
+}
+
 ?>
