@@ -79,7 +79,7 @@ function event_images($id) {
     return $rows;
 }
 
-function new_event($title, $author, $event, $cover) {
+function new_event($title, $author, $event, $cover, $images) {
     // Connect to database
     $conn = connect();
 
@@ -89,15 +89,23 @@ function new_event($title, $author, $event, $cover) {
     $stmt->bind_param("sssss", $title, $author, $date, $cover, $event);
 
     // Send query
-    if ($stmt->execute()) {
-        echo("Ha colao");
-    }
-    else {
-        echo("No ha colao");
+    $stmt->execute();
+
+    // Images:
+    // Retrieve event ID
+    $last_id = $conn->insert_id;
+
+    // Save images
+    foreach($images as $img) {
+        $stmt = $conn->prepare("INSERT INTO imagenes (ruta, evento) VALUES (?, ?)");
+        $stmt->bind_param("si", $img, $last_id);
+        $stmt->execute();
     }
 
     // Close connection
     $conn->close();
+
+    return $last_id;
 }
 
 ?>

@@ -35,8 +35,32 @@
                 move_uploaded_file($file_tmp, "img/" . $file_name);
                 $cover = "img/" . $file_name;
             }
-            else {
-                echo($errors);
+        }
+
+        // Imágenes
+        $images = array();
+        if(isset($_FILES['images'])) {
+            $n = count($_FILES['images']['name']);
+            for($i = 0; $i < $n; $i++) {
+                $errors = array();
+                $file_name = $_FILES['images']['name'][$i];
+                $file_size = $_FILES['images']['size'][$i];
+                $file_tmp = $_FILES['images']['tmp_name'][$i];
+                $file_type = $_FILES['images']['type'][$i];
+                $file_ext = strtolower(end(explode('.', $_FILES['images']['name'][$i])));
+    
+                if(in_array($file_ext, $extensions) === false) {
+                    $errors[$i] = "Extensión no permitida, elige una imagen PNG o JPEG";
+                }
+    
+                if($file_size > 2097152) {
+                    $errors[$i] = "Tamaño de imagen demasiado grande";
+                }
+    
+                if(empty($errors) === true) {
+                    move_uploaded_file($file_tmp, "img/" . $file_name);
+                    array_push($images, "../img/" . $file_name);
+                }
             }
         }
 
@@ -46,8 +70,8 @@
         }
 
         // Subir a la base de datos
-        new_event($title, $author, $event, $cover);
+        $id = new_event($title, $author, $event, $cover, $images);
 
-        //header('Location: /nuevo');
+        header('Location: http://localhost/evento/' . $id);
     }
 ?>
