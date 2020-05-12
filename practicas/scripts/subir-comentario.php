@@ -4,9 +4,11 @@
     // Procesar el formulario de nuevo evento
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Título
-        if(isset($_POST['id'])) {
-            $id = $_POST['id'];
+        if(isset($_POST['event'])) {
+            $id = $_POST['event'];
         }
+
+
 
         if(isset($_POST['author'])) {
             $author = $_POST['author'];
@@ -19,6 +21,6 @@
         // Subir comentario
         new_comment($id, $author, $comment);
 
-        header('Location: eventos/' . $id);
+        header('Location: evento/' . $id);
     }
 ?>
