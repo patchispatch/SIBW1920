@@ -1,14 +1,26 @@
 <?php
-    require_once "/usr/local/lib/php/vendor/autoload.php";
+    session_start();
+    require 'db.php';
 
-    $loader = new \Twig\Loader\FilesystemLoader('../html');
-    $twig = new \Twig\Environment($loader);
+    // Event number
+    $resto = substr($uri, 8);
+    $idEvent = intval($resto);
 
-    // Page name
-    $pagename = "AAAAAAAAAH (versión para imprimir)";
+    // Event info
+    $event = event_info($idEvent);
+    $images = event_images($idEvent);
+
+    // Twig variables
+    $variables['title'] = $event["titulo"];
+    $variables['author'] = $event["autor"];
+    $variables['date'] = $event["fecha"];
+    $variables['content'] = $event["texto"];
+
+    if(isset($_SESSION['username'])) {
+        $variables['username'] = $_SESSION['username'];
+        $variables['role'] = $_SESSION['role'];
+    }
 
     // Render
-    echo $twig->render('evento-imprimir.html', [
-        'pagename' => $pagename,
-    ]);
+    echo $twig->render('evento-imprimir.html', $variables);
 ?>

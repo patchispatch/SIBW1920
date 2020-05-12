@@ -1,5 +1,5 @@
 <?php
-    require_once('db.php');
+    require_once 'db.php';
 
     // Procesar el formulario de nuevo evento
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -72,6 +72,6 @@
         // Subir a la base de datos
         $id = new_event($title, $author, $event, $cover, $images);
 
-        header('Location: http://localhost/evento/' . $id);
+        header('Location: /evento/' . $id);
     }
 ?>

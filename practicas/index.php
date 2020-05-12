@@ -14,6 +14,9 @@
     if(startsWith($uri, "/login")) {
         include("scripts/login.php");
     }
+    else if(startsWith($uri, "/logout")) {
+        include("scripts/logout.php");
+    }
     else if(startsWith($uri, "/session")) {
         include("scripts/session.php");
     }

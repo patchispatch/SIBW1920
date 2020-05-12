@@ -6,7 +6,7 @@
             $username = $_POST['username'];
         }
         if(isset($_POST['passwd'])) {
-            $passwd = password_hash($_POST['username'], PASSWORD_DEFAULT);
+            $passwd = password_hash($_POST['passwd'], PASSWORD_DEFAULT);
         }
         if(isset($_POST['role'])) {
             $role = $_POST['role'];

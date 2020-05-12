@@ -4,14 +4,10 @@
 
     // Save user data
     if(isset($_POST['username']) && check_user($_POST['username'], $_POST['passwd'])) {
-        $_SESSION['username'] = $_POST['username'];
-    }
-    else {
-       print_r("Todo mal");
-    }
+        $user = user_info($_POST['username']);
+        $_SESSION['username'] = $user['username'];
 
-    if(isset($_POST['role'])) {
-        switch($_POST['role']) {
+        switch($user['role']) {
             case 0:
                 $role = 'admin';
             break;
@@ -30,6 +26,9 @@
         }
         $_SESSION['role'] = $role;
     }
+    else {
+        // TO DO: página de error
+    }
 
-    //header('Location: principal');
+    header('Location: principal');
 ?>

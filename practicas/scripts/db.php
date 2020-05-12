@@ -129,16 +129,22 @@ function check_user($username, $password) {
     $result = $stmt->get_result();
     $hash = $result->fetch_assoc();
 
-    if(password_verify($password, $hash['password'])) {
-        $correct = true;
-    }
-    else {
-        $correct = false;
-    }
-
     $conn->close();
 
-    return $correct;
+    return password_verify($password, $hash['password']);
+}
+
+function user_info($username) {
+    $conn = connect();
+
+    $stmt = $conn->prepare("SELECT username, rol FROM usuarios WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $user_data = $result->fetch_assoc();
+
+    return $user_data;
 }
 
 ?>
