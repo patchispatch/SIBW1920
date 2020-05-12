@@ -10,17 +10,31 @@
 
     $uri = $_SERVER['REQUEST_URI'];
 
-    if(startsWith($uri, "/evento")) {
+    // TO DO: añadir comprobación de que el usuario no esté logueado
+    if(startsWith($uri, "/login")) {
+        include("scripts/login.php");
+    }
+    else if(startsWith($uri, "/session")) {
+        include("scripts/session.php");
+    }
+    else if(startsWith($uri, "/evento")) {
         include("scripts/evento.php");
     }
     else if(startsWith($uri, "/cpanel")) {
         include("scripts/cpanel.php");
     }
-    else if(startsWith($uri, "/nuevo")) {
-        include("scripts/nuevo.php");
-    }
     else if(startsWith($uri, "/subir-evento")) {
         include("scripts/subir-evento.php");
+    }
+    // QUITAR
+    else if(startsWith($uri, "/nuevousuario")) {
+        include("scripts/nuevousuario.php");
+    }
+    else if(startsWith($uri, "/subirusuario")) {
+        include("scripts/subir-usuario.php");
+    }
+    else if(startsWith($uri, "/nuevo")) {
+        include("scripts/nuevo.php");
     }
     else {
         include("scripts/portada.php");

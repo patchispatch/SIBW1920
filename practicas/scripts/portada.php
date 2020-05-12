@@ -1,15 +1,17 @@
 <?php
+    session_start();
     require 'db.php';
 
-// Page name
-    $pagename = "Página principal";
+    // Variables twig
+    $variables['pagename'] = "Página principal";
+    $variables['events'] = all_events();
 
-    // Events available
-    $events = all_events();
+    if(isset($_SESSION['username'])) {
+        $variables['username'] = $_SESSION['username'];
+        $variables['role'] = $_SESSION['role'];
+    }
+
+    echo $twig->render('portada.html', $variables);
 
 
-    echo $twig->render('portada.html', [
-        'pagename' => $pagename,
-        'events' => $events,
-    ]);
 ?>

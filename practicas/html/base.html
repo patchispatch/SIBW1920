@@ -32,9 +32,19 @@
             <!-- MENÚ -->
             <ul class="navigation">
                 <a href=""><li>Inicio</li></a>
-                <a><li>Sobre nosotros</li></a>
-                <a><li>Perfil</li></a>
-                <a href="/cpanel"><li>Panel de control</li></a>
+
+                {% if username is defined %}
+                    <a><li>Perfil de {{ username }}</li></a>
+
+                    {% if role != "regular" %}
+                        <a href="/cpanel"><li>Panel de control</li></a>
+                    {% endif %}
+
+                    <a href="/logout"><li>Cerrar sesión</li></a>
+
+                {% else %}
+                    <a href="/login"><li>Iniciar sesión</li></a>
+                {% endif %}
             </ul>
         </div>
     </header>

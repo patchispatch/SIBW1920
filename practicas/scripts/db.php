@@ -108,4 +108,37 @@ function new_event($title, $author, $event, $cover, $images) {
     return $last_id;
 }
 
+function new_user($username, $password, $role) {
+    $conn = connect();
+
+    $stmt = $conn->prepare("INSERT INTO usuarios (username, password, rol) VALUES (?, ?, ?)");
+    $stmt->bind_param("ssi", $username, $password, $role);
+    $stmt->execute();
+
+    $conn->close();
+}
+
+function check_user($username, $password) {
+    $conn = connect();
+
+    $stmt = $conn->prepare("SELECT password FROM usuarios WHERE (username = ?)");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+
+    // Check
+    $result = $stmt->get_result();
+    $hash = $result->fetch_assoc();
+
+    if(password_verify($password, $hash['password'])) {
+        $correct = true;
+    }
+    else {
+        $correct = false;
+    }
+
+    $conn->close();
+
+    return $correct;
+}
+
 ?>
