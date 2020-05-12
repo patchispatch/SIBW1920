@@ -10,7 +10,9 @@
     $event = event_info($idEvent);
     
     // Twig variables
+    $variables['id'] = $idEvent;
     $variables['images'] = event_images($idEvent);
+    $variables['comments'] = event_comments($idEvent);
     $variables['title'] = $event["titulo"];
     $variables['author'] = $event["autor"];
     $variables['date'] = $event["fecha"];

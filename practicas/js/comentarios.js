@@ -37,24 +37,23 @@ function addComment(author, email, com) {
 }
 
 function validateForm() {
-    var author = document.forms["postcomment"]["author"].value;
-    var email = document.forms["postcomment"]["email"].value;
+    // var author = document.forms["postcomment"]["author"].value;
+    //var email = document.forms["postcomment"]["email"].value;
     var comment = document.forms["postcomment"]["comment"].value;
-    
+
     // Check blank spaces
-    if (author == "" || email == "" || comment == "") {
+    if (comment == "") {
         alert("Todos los campos deben rellenarse");
         return false;
     }
     
+    /*
     // Check email is correct
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
         alert("Debes proporcionar una dirección de correo electrónico válida.")
         return false;
     }
-    else {
-        addComment(author, email, comment);
-    }
+    */
 }
 
 function getBannedWords() {

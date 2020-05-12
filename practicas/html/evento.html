@@ -54,27 +54,33 @@
     </div>
 
     <div id="comments" class="comments">
+        {% for comment in comments %}
         <div class="comment">
-            <h4>Paco Fiestas - 04/03, 17:00</h4>
-            <p>Me apunto si luego jugamos al Tekken 3</p>
+            <h4>{{ comment.autor }} - {{ comment.fecha }}</h4>
+            <p>{{ comment.contenido }}</p>
         </div>
-        <div class="comment">
-            <h4>Sergio Ortuño - 16/03, 20:13</h4>
-            <p>Típico chaval de instituto</p>
-        </div>
+        {% endfor %}
     </div>
 
     <div id="comments-form">
         <h3>Publica un comentario</h3>
-        <form id="postcomment" action="javascript:void(0);" onsubmit="validateForm()">
-            <label for="author">Autor:</label><br>
-            <input type="text" id="author" name="author" required><br>
-            <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email" required><br>           
+        <form id="postcomment" action="/subir-comentario" onsubmit="validateForm()" method="POST">
+            <!-- META-->
+            <input type="hidden" id="event" name="event" value={{ id }}>
+            <input type="hidden" id="author" name="author" value={{ username }}>
+     
             <label for="comment">Comentario:</label><br>
             <textarea id="comment-area" name="comment" form="postcomment" oninput="liveCensorship('comment-area')"></textarea>
             <input type="submit" value="Publicar">
         </form>
+
+        <!-- CKEditor
+        <script>
+            ClassicEditor.create(document.querySelector('#editor')).catch(error => {
+                console.error(error);
+            });
+        </script>
+        -->
     </div>
 </div>
 {% endblock %}

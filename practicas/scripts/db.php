@@ -79,6 +79,21 @@ function event_images($id) {
     return $rows;
 }
 
+function event_comments($id) {
+    $conn = connect();
+
+    $stmt = $conn->prepare("SELECT autor, fecha, contenido FROM comentarios WHERE (evento = ?)");
+    $stmt->bind_param("s", $id);
+    $stmt->execute();
+
+    // Check
+    $result = $stmt->get_result();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+    $conn->close();
+    return $rows;
+}
+
 function new_event($title, $author, $event, $cover, $images) {
     // Connect to database
     $conn = connect();
@@ -113,6 +128,18 @@ function new_user($username, $password, $role) {
 
     $stmt = $conn->prepare("INSERT INTO usuarios (username, password, rol) VALUES (?, ?, ?)");
     $stmt->bind_param("ssi", $username, $password, $role);
+    $stmt->execute();
+
+    $conn->close();
+}
+
+function new_comment($event_id, $author, $content) {
+    $conn = connect();
+
+    $date = date("Y-m-d H:i:s");
+
+    $stmt = $conn->prepare("INSERT INTO comentarios (autor, fecha, evento, contenido) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $author, $date, $event_id, $content);
     $stmt->execute();
 
     $conn->close();

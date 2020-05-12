@@ -29,6 +29,9 @@
     else if(startsWith($uri, "/subir-evento")) {
         include("scripts/subir-evento.php");
     }
+    else if(startsWith($uri, "/subir-comentario")) {
+        include("scripts/subir-comentario.php");
+    }
     // QUITAR
     else if(startsWith($uri, "/nuevousuario")) {
         include("scripts/nuevousuario.php");
