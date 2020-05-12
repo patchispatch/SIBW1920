@@ -1,0 +1,28 @@
+{% extends "cpanel.html" %}
+
+{% block cpanel %}
+<h1>Lista de eventos</h1>
+
+<table>
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Fecha</th>
+        <th>Opciones</th>
+    </tr>
+
+    {% for evento in eventos %}
+    <tr>
+        <td><a href="evento/{{ evento.id }}">{{ evento.titulo }}</a></td>
+        <td>{{ evento.autor }}</td>
+        <td>{{ evento.fecha }}</td>
+        <td>
+            <button type="button">Modificar</button>
+            <button type="button">Eliminar</button>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock %}

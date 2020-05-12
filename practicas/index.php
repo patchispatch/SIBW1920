@@ -32,6 +32,15 @@
     else if(startsWith($uri, "/subir-comentario")) {
         include("scripts/subir-comentario.php");
     }
+    else if(startsWith($uri, "/lista-eventos")) {
+        include("scripts/lista-eventos.php");
+    }
+    else if(startsWith($uri, "/lista-usuarios")) {
+        include("scripts/lista-usuarios.php");
+    }
+    else if(startsWith($uri, "/lista-comentarios")) {
+        include("scripts/lista-comentarios.php");
+    }
     // QUITAR
     else if(startsWith($uri, "/nuevousuario")) {
         include("scripts/nuevousuario.php");

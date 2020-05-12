@@ -12,12 +12,12 @@
         <li><a href="/nuevo">Publicar evento</a></li>
 
         {% if role == "admin" or role == "gest" %}
-            <li><a>Listado de eventos</a></li>
-            <li><a>Listado de usuarios</a></li>
+            <li><a href="/lista-eventos">Lista de eventos</a></li>
+            <li><a href="/lista-usuarios">Lista de usuarios</a></li>
         {% endif %}
 
         {% if role == "admin" or role == "mod" %}
-            <li><a>Listado de comentarios</a></li>
+            <li><a href="/lista-comentarios">Lista de comentarios</a></li>
         {% endif %}
     </ul>
 </div>

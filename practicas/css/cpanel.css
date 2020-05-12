@@ -126,6 +126,25 @@ header {
     color: white;
 }
 
+table {
+    width: 100%;
+    text-align: left;
+}
+
+th {
+    background-color: #101010;
+    color: #fff7eb;
+}
+
+th, td {
+    padding-left: 2em;
+    height: 3em;
+}
+
+
+tr:nth-child(odd) {
+    background-color: #eadecd;
+}
 
 
 footer {

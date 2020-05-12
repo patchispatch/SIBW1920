@@ -8,8 +8,6 @@
             $id = $_POST['event'];
         }
 
-
-
         if(isset($_POST['author'])) {
             $author = $_POST['author'];
         }

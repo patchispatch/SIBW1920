@@ -1,0 +1,30 @@
+{% extends "cpanel.html" %}
+
+{% block cpanel %}
+<h1>Lista de usuarios</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Autor</th>
+        <th>Fecha</th>
+        <th>Evento</th>
+        <th>Opciones</th>
+    </tr>
+
+    {% for comentario in comentarios %}
+    <tr>
+        <td><a>{{ comentario.id }}</a></td>
+        <td><a>{{ comentario.autor }}</a></td>
+        <td><a>{{ comentario.fecha }}</a></td>
+        <td><a href="/evento/{{ comentario.evento }}">{{ comentario.evento }}</a></td>
+        <td>
+            <button type="button">Modificar</button>
+            <button type="button">Eliminar</button>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock %}

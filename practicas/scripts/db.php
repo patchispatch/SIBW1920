@@ -41,6 +41,48 @@ function all_events() {
     return $row; 
 }
 
+function all_events_list() {
+    $conn = connect();
+
+    $stmt = $conn->prepare("SELECT id, titulo, autor, fecha FROM eventos");
+    $stmt->execute();
+
+    // Check
+    $result = $stmt->get_result();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+    $conn->close();
+    return $rows;
+}
+
+function all_users_list() {
+    $conn = connect();
+
+    $stmt = $conn->prepare("SELECT username, rol FROM usuarios");
+    $stmt->execute();
+
+    // Check
+    $result = $stmt->get_result();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+    $conn->close();
+    return $rows;
+}
+
+function all_comments_list() {
+    $conn = connect();
+
+    $stmt = $conn->prepare("SELECT id, autor, fecha, evento FROM comentarios");
+    $stmt->execute();
+
+    // Check
+    $result = $stmt->get_result();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
+    $conn->close();
+    return $rows;
+}
+
 // Returns event data in an associative array
 function event_info($id) {
     // Connect to the database
