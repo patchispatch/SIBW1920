@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'db.php';
 
     // Procesar el formulario de nuevo evento
@@ -8,9 +9,7 @@
             $title = $_POST['title'];
         }
 
-        if(isset($_POST['author'])) {
-            $author = $_POST['author'];
-        }
+        $author = $_SESSION['username'];
 
         // Portada
         if(isset($_FILES['cover'])) {

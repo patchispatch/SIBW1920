@@ -24,7 +24,10 @@
         {% endif %}
         <td>
             <button type="button">Cambiar permisos</button>
-            <button type="button">Eliminar</button>
+            <form action="/borrar-usuario" method="POST">
+                <input type="hidden" name="username" value="{{ usuario.username }}">
+                <button type="submit">Eliminar</button>
+            </form>
         </td>
     </tr>
 

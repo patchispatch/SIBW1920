@@ -216,4 +216,38 @@ function user_info($username) {
     return $user_data;
 }
 
+function delete_comment($id) {
+    $conn = connect();
+
+    $stmt = $conn->prepare("DELETE FROM comentarios WHERE id = ?");
+    $stmt->bind_param("s", $id);
+    $stmt->execute();
+
+    $conn->close();
+}
+
+function delete_event($id) {
+    $conn = connect();
+
+    // Delete events
+    $stmt1 = $conn->prepare("DELETE FROM eventos WHERE id = ?");
+    $stmt1->bind_param("s", $id);
+    $stmt1->execute();
+
+    $conn->close();
+}
+
+function delete_user($username) {
+    $conn = connect();
+
+    // Delete events
+    $stmt1 = $conn->prepare("DELETE FROM usuarios WHERE username = ?");
+    $stmt1->bind_param("s", $username);
+    $stmt1->execute();
+
+    $conn->close();
+}
+
+
+
 ?>

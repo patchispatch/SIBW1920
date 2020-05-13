@@ -20,7 +20,10 @@
         <td><a href="/evento/{{ comentario.evento }}">{{ comentario.evento }}</a></td>
         <td>
             <button type="button">Modificar</button>
-            <button type="button">Eliminar</button>
+            <form action="/borrar-comentario" method="POST">
+                <input type="hidden" name="comment-id" value="{{ comentario.id }}">
+                <button type="submit">Eliminar</button>
+            </form>
         </td>
     </tr>
 
