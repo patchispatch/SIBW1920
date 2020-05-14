@@ -12,7 +12,7 @@
     $uri = $_SERVER['REQUEST_URI'];
 
     // PARA TODOS
-    if(startsWith($uri, "/portada")) {
+    if(startsWith($uri, "/portada") || $uri === "/") {
         include("scripts/portada.php");
     }
     else if(startsWith($uri, "/evento")) {
@@ -38,39 +38,45 @@
     ($_SESSION['role'] == 'mod' || $_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
         include("scripts/cpanel.php");
     }
-    else if(startsWith($uri, "/lista-comentarios")) {
+
+    // MOD
+    else if(startsWith($uri, "/lista-comentarios") && ($_SESSION['role'] == 'mod' || $_SESSION['role'] == 'admin')) {
         include("scripts/lista-comentarios.php");
     }
-    else if(startsWith($uri, "/subir-evento")) {
-        include("scripts/subir-evento.php");
-    }
-    else if(startsWith($uri, "/lista-eventos")) {
-        include("scripts/lista-eventos.php");
-    }
-    else if(startsWith($uri, "/lista-usuarios")) {
-        include("scripts/lista-usuarios.php");
-    }
-
-    else if(startsWith($uri, "/borrar-comentario")) {
+    else if(startsWith($uri, "/borrar-comentario") && ($_SESSION['role'] == 'mod' || $_SESSION['role'] == 'admin')) {
         include("scripts/borrar-comentario.php");
     }
-    else if(startsWith($uri, "/borrar-evento")) {
+
+    // GEST
+    else if(startsWith($uri, "/subir-evento") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
+        include("scripts/subir-evento.php");
+    }
+    else if(startsWith($uri, "/lista-eventos") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
+        include("scripts/lista-eventos.php");
+    }
+    else if(startsWith($uri, "/borrar-evento") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
         include("scripts/borrar-evento.php");
     }
-    else if(startsWith($uri, "/borrar-usuario")) {
-        include("scripts/borrar-usuario.php");
-    }
-    // QUITAR
-    else if(startsWith($uri, "/nuevousuario")) {
-        include("scripts/nuevousuario.php");
-    }
-    else if(startsWith($uri, "/subirusuario")) {
-        include("scripts/subir-usuario.php");
-    }
-    else if(startsWith($uri, "/nuevo")) {
+    else if(startsWith($uri, "/nuevo") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
         include("scripts/nuevo.php");
     }
+
+    // ADMIN
+    else if(startsWith($uri, "/lista-usuarios") && ($_SESSION['role'] == 'admin')) {
+        include("scripts/lista-usuarios.php");
+    }
+    else if(startsWith($uri, "/borrar-usuario") && ($_SESSION['role'] == 'admin')) {
+        include("scripts/borrar-usuario.php");
+    }
+    else if(startsWith($uri, "/nuevo-usuario") && ($_SESSION['role'] == 'admin')) {
+        include("scripts/nuevousuario.php");
+    }
+    else if(startsWith($uri, "/subir-usuario") && ($_SESSION['role'] == 'admin')) {
+        include("scripts/subir-usuario.php");
+    }
+
+    // ERROR
     else {
-        include("scripts/portada.php");
+        include("scripts/error.php");
     }
 ?>

@@ -1,10 +1,11 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
-{% block css%}
+{% block css %}
 <link href="../css/portada.css" rel="stylesheet" type="text/css">
 {% endblock %}
 
-{% block content %}
+{% block center %}
+<div>
     <h1>404</h1>
     <br>
     <p>La página que estás buscando no existe. Pulsa aquí para volver
@@ -13,4 +14,6 @@
     <form action="/portada">
         <button type="submit">Volver</button>
     </form>
+</div>
+
 {% endblock %}
