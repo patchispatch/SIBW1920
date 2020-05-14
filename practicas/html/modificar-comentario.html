@@ -1,0 +1,15 @@
+{% extends "cpanel.html" %}
+
+{% block cpanel %}
+<h1>Modificar comentario</h1>
+
+<form id="modificar-comentario" action="/actualizar-comentario" method="post">
+    <input type="hidden" name="comment-id" value="{{ comentario.id }}">
+
+    <label for="editor">Descripción del evento:</label><br>
+    <textarea name="comentario" form="modificar-comentario">
+        {{ comentario.contenido }}
+    </textarea>
+    <input type="submit" value="Actualizar">
+</form>
+{% endblock %}

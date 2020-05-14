@@ -46,6 +46,12 @@
     else if(startsWith($uri, "/borrar-comentario") && ($_SESSION['role'] == 'mod' || $_SESSION['role'] == 'admin')) {
         include("scripts/borrar-comentario.php");
     }
+    else if(startsWith($uri, "/modificar-comentario") && ($_SESSION['role'] == 'mod' || $_SESSION['role'] == 'admin')) {
+        include("scripts/modificar-comentario.php");
+    }
+    else if(startsWith($uri, "/actualizar-comentario") && ($_SESSION['role'] == 'mod' || $_SESSION['role'] == 'admin')) {
+        include("scripts/actualizar-comentario.php");
+    }
 
     // GEST
     else if(startsWith($uri, "/subir-evento") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
@@ -60,6 +66,12 @@
     else if(startsWith($uri, "/nuevo") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
         include("scripts/nuevo.php");
     }
+    else if(startsWith($uri, "/modificar-evento") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
+        include("scripts/modificar-evento.php");
+    }
+    else if(startsWith($uri, "/actualizar-evento") && ($_SESSION['role'] == 'gest' || $_SESSION['role'] == 'admin')) {
+        include("scripts/actualizar-evento.php");
+    }
 
     // ADMIN
     else if(startsWith($uri, "/lista-usuarios") && ($_SESSION['role'] == 'admin')) {
@@ -73,6 +85,12 @@
     }
     else if(startsWith($uri, "/subir-usuario") && ($_SESSION['role'] == 'admin')) {
         include("scripts/subir-usuario.php");
+    }
+    else if(startsWith($uri, "/modificar-usuario") && ($_SESSION['role'] == 'admin')) {
+        include("scripts/modificar-usuario.php");
+    }
+    else if(startsWith($uri, "/actualizar-usuario") && ($_SESSION['role'] == 'admin')) {
+        include("scripts/actualizar-usuario.php");
     }
 
     // ERROR

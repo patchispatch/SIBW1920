@@ -1,0 +1,20 @@
+{% extends "cpanel.html" %}
+
+{% block cpanel %}
+<h1>Modificar usuario</h1>
+
+<form id="modificar-usuario" action="/actualizar-usuario" method="post">
+    <input type="hidden" name="old-username" value="{{ usuario.username }}">
+
+    <label for="username">Nombre de usuario:</label><br>
+    <input type="text" name="username" value="{{ usuario.username }}">
+    <br>
+    <label for="username">Nueva contraseña (opcional)</label><br>
+    <input type="password" name="passwd">
+    <br>
+    <label for="username">Rol: (Admin: 0; Gest: 1; Mod: 2; Regular: 3)</label><br>
+    <input type="text" name="role" value="{{ usuario.rol }}">
+    <br>
+    <input type="submit" value="Actualizar">
+</form>
+{% endblock %}

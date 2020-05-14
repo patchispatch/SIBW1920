@@ -136,6 +136,22 @@ function event_comments($id) {
     return $rows;
 }
 
+function comment_info($id) {
+    $conn = connect();
+
+    // Update event
+    $stmt = $conn->prepare("SELECT * FROM comentarios WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $conn->close();
+
+    return $row;
+}
+
 function new_event($title, $author, $event, $cover, $images) {
     // Connect to database
     $conn = connect();
@@ -213,6 +229,8 @@ function user_info($username) {
     $result = $stmt->get_result();
     $user_data = $result->fetch_assoc();
 
+    print_r($user_data);
+
     return $user_data;
 }
 
@@ -248,6 +266,44 @@ function delete_user($username) {
     $conn->close();
 }
 
+function update_event($title, $event, $id) {
+    $conn = connect();
+
+    // Update event
+    $stmt = $conn->prepare("UPDATE eventos SET titulo = ?, texto = ? WHERE id = ?");
+    $stmt->bind_param("ssi", $title, $event, $id);
+    $result = $stmt->execute();
+
+    $conn->close(); 
+}
+
+function update_comment($id, $comment) {
+    $conn = connect();
+
+    // Update event
+    $stmt = $conn->prepare("UPDATE comentarios SET contenido = ? WHERE id = ?");
+    $stmt->bind_param("si", $comment, $id);
+    $result = $stmt->execute();
+
+    $conn->close(); 
+}
+
+function update_user($old_username, $new_username, $new_passwd, $new_role) {
+    $conn = connect();
+
+    if($new_passwd != 'null') {
+        $stmt = $conn->prepare("UPDATE usuarios SET username = ?, password = ?, rol = ? WHERE username = ?");
+        $stmt->bind_param("ssis", $new_username, $new_passwd, $new_role, $old_username);
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE usuarios SET username = ?, rol = ? WHERE username = ?");
+        $stmt->bind_param("sis", $new_username, $new_role, $old_username);
+    }
+
+    $result = $stmt->execute();
+
+    $conn->close();
+}
 
 
 ?>

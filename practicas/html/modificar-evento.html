@@ -1,0 +1,28 @@
+{% extends "cpanel.html" %}
+
+{% block script %}
+<script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+{% endblock %}
+
+{% block cpanel %}
+<h1>Modificar evento</h1>
+
+<form id="newevent" action="/actualizar-evento" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="event-id" value="{{ evento.id }}"
+
+    <label for="title">Título</label><br>
+    <input type="text" id="title" name="title" value="{{ evento.titulo }}"required><br>
+
+    <label for="editor">Descripción del evento:</label><br>
+    <textarea id="editor" name="event" form="newevent">
+        {{ evento.texto }}
+    </textarea>
+    <input type="submit" value="Actualizar">
+</form>
+
+<script>
+    ClassicEditor.create(document.querySelector('#editor')).catch(error => {
+        console.error(error);
+    });
+</script>
+{% endblock %}
