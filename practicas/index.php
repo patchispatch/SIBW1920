@@ -11,8 +11,6 @@
 
     $uri = $_SERVER['REQUEST_URI'];
 
-
-
     // PARA TODOS
     if(startsWith($uri, "/portada")) {
         include("scripts/portada.php");
