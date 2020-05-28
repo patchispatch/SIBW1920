@@ -229,8 +229,6 @@ function user_info($username) {
     $result = $stmt->get_result();
     $user_data = $result->fetch_assoc();
 
-    print_r($user_data);
-
     return $user_data;
 }
 

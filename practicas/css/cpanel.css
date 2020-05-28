@@ -53,10 +53,6 @@ header {
     padding: 0px 20px;
 }
 
-.navigation a:last-child {
-    padding-right: 0;
-}
-
 .navigation li {
     display: table-cell;
     vertical-align: middle;
@@ -64,6 +60,20 @@ header {
     color: white;
     font-family: "Open Sans";
     font-size: 20px;
+}
+
+.navigation a:last-child {
+    padding-right: 0;
+}
+
+.navigation input[type=text] {
+    display: table-cell;
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
 }
 
 .grid-body {

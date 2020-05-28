@@ -12,6 +12,4 @@
     }
 
     echo $twig->render('portada.html', $variables);
-
-
 ?>

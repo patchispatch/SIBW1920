@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Open+Sans&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Open+Sans|Material+Icons&display=swap" rel="stylesheet">
+    <link href="../css/instant-search.css" rel="stylesheet" type="text/css">
+    
     {% block css %}
     {% endblock %}
 
@@ -29,21 +30,59 @@
                      <h1>Lucha.</h1>
                 </div>
             </a>
+
             <!-- MENÚ -->
             <ul class="navigation">
-                <a href=""><li>Inicio</li></a>
+                <!-- BÚSQUEDA -->
+                <li>
+                    <div id="searchEvents" class="instant-search">
+                        <div class="instant-search__input-container">
+                            <input class="instant-search__input" spellcheck="false" type="text" placeholder="Búsqueda...">
+                            <i class="material-icons instant-search__icon">search</i>
+                        </div>
+
+                        <div class="instant-search__results-container">
+                            <a href="#" class="instant-search__result">
+                                <div class="instant-search__title">
+                                    Título del evento
+                                </div>
+                                <p class="instant-search__paragraph">
+                                    Lorem fistrum hasta luego Lucas sexuarl llevame al sircoo papaar papaar ese hombree sexuarl. 
+                                    Fistro diodenoo diodenoo mamaar diodenoo pupita diodenoo te va a hasé pupitaa quietooor. 
+                                    Condemor de la pradera ese que llega hasta luego Lucas pupita apetecan de la pradera no te digo trigo por no llamarte Rodrigor. 
+                                    Te voy a borrar el cerito te va a hasé pupitaa diodeno pecador.
+                                </p>
+                            </a>
+
+                            <a href="#" class="instant-search__result">
+                                <div class="instant-search__title">
+                                    Título del evento
+                                </div>
+                                <p class="instant-search__paragraph">
+                                    Lorem fistrum hasta luego Lucas sexuarl llevame al sircoo papaar papaar ese hombree sexuarl. 
+                                    Fistro diodenoo diodenoo mamaar diodenoo pupita diodenoo te va a hasé pupitaa quietooor. 
+                                    Condemor de la pradera ese que llega hasta luego Lucas pupita apetecan de la pradera no te digo trigo por no llamarte Rodrigor. 
+                                    Te voy a borrar el cerito te va a hasé pupitaa diodeno pecador.
+                                </p>
+                            </a>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li><a class="menu-element" href="">Inicio</a></li>
 
                 {% if username is defined %}
-                    <a><li>Perfil de {{ username }}</li></a>
+                    <li><a class="menu-element">Perfil de {{ username }}</a></li>
 
                     {% if role != "regular" %}
-                        <a href="/cpanel"><li>Panel de control</li></a>
+                    <li><a class="menu-element" href="/cpanel">Panel de control</a></li>
                     {% endif %}
 
-                    <a href="/logout"><li>Cerrar sesión</li></a>
+                    <li><a class="menu-element" href="/logout">Cerrar sesión</a></li>
 
                 {% else %}
-                    <a href="/login"><li>Iniciar sesión</li></a>
+                    <li><a class="menu-element" href="/login">Iniciar sesión</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -63,7 +102,6 @@
                     Desde <b>Lucha.</b> ponemos a tu disposición consejos y guías para practicar esta bella afición sin riesgo de dañarte a ti o a otros.
                     Recordad que estos eventos son 100% voluntarios y amistosos, por lo que está terminantemente prohibido pegarse con fines malévolos.
                 </p>
-
             </div>
             
             <div>
