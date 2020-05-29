@@ -21,6 +21,9 @@
     else if(startsWith($uri, "/subir-comentario")) {
         include("scripts/subir-comentario.php");
     }
+    else if(startsWith($uri, "/search")) {
+        include("scripts/search.php");
+    }
 
     // SESIÓN
     else if(startsWith($uri, "/login") && !isset($_SESSION['username'])) {

@@ -303,5 +303,19 @@ function update_user($old_username, $new_username, $new_passwd, $new_role) {
     $conn->close();
 }
 
+function search_events($query) {
+    $conn = connect();
+
+    //Search for coincidences
+    $stmt = $conn->prepare("SELECT id, titulo, texto FROM eventos WHERE titulo LIKE %?% OR texto LIKE %?%");
+    $stmt->bind_param("ss", $query, $query);
+    $result = $stmt->execute();
+
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    $conn->close();
+
+    return $rows;
+}
+
 
 ?>
