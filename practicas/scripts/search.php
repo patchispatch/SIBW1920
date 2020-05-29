@@ -3,9 +3,9 @@
 
     header('Content-Type: application/json');
 
-    if($_SERVER['REQUEST_METHOD'] === 'GET') {
-        if(isset($_GET['query'])) {
-            $query = $_GET['query'];
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if(isset($_POST['query'])) {
+            $query = $_POST['query'];
         }
     }
     

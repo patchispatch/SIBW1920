@@ -307,10 +307,11 @@ function search_events($query) {
     $conn = connect();
 
     //Search for coincidences
-    $stmt = $conn->prepare("SELECT id, titulo, texto FROM eventos WHERE titulo LIKE %?% OR texto LIKE %?%");
+    $stmt = $conn->prepare("SELECT id, titulo, texto FROM eventos WHERE titulo LIKE CONCAT('%',?,'%') OR texto LIKE CONCAT('%',?,'%')");
     $stmt->bind_param("ss", $query, $query);
-    $result = $stmt->execute();
+    $stmt->execute();
 
+    $result = $stmt->get_result();
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     $conn->close();
 
