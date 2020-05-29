@@ -68,8 +68,13 @@
             $event = $_POST['event'];
         }
 
+        // Borrador
+        if(isset($_POST['draft'])) {
+            $draft = (int)$_POST['draft'];
+        }
+
         // Subir a la base de datos
-        $id = new_event($title, $author, $event, $cover, $images);
+        $id = new_event($title, $author, $event, $cover, $images, $draft);
 
         header('Location: /evento/' . $id);
     }

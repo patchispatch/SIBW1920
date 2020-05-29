@@ -14,9 +14,17 @@
             $event = $_POST['event'];
         }
 
+        // Publicado/borrador
+        $published = 0;
+        if(isset($_POST['draft'])) {
+            if($_POST['draft'] != null) {
+                $published = 1;
+            }
+        }
+
         // Subir a la base de datos
         $id = $_POST['event-id'];
-        update_event($title, $event, $id);
+        update_event($title, $event, $id, $published);
 
         header('Location: /evento/' . $id);
     }

@@ -28,7 +28,7 @@ function all_events() {
     $conn = connect();
         
     // Prepare query
-    $stmt = "SELECT id, titulo, portada FROM eventos";
+    $stmt = "SELECT id, titulo, portada FROM eventos WHERE publicado=TRUE";
 
     // Send query and close connection
     $result = query($conn, $stmt);
@@ -44,7 +44,7 @@ function all_events() {
 function all_events_list() {
     $conn = connect();
 
-    $stmt = $conn->prepare("SELECT id, titulo, autor, fecha FROM eventos");
+    $stmt = $conn->prepare("SELECT id, titulo, autor, fecha, publicado FROM eventos");
     $stmt->execute();
 
     // Check
@@ -152,14 +152,14 @@ function comment_info($id) {
     return $row;
 }
 
-function new_event($title, $author, $event, $cover, $images) {
+function new_event($title, $author, $event, $cover, $images, $draft) {
     // Connect to database
     $conn = connect();
 
     // Prepare query
     $date = date("Y-m-d H:i:s");
-    $stmt = $conn->prepare("INSERT INTO eventos (titulo, autor, fecha, portada, texto) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $title, $author, $date, $cover, $event);
+    $stmt = $conn->prepare("INSERT INTO eventos (titulo, autor, fecha, portada, texto, publicado) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssi", $title, $author, $date, $cover, $event, $draft);
 
     // Send query
     $stmt->execute();
@@ -264,12 +264,12 @@ function delete_user($username) {
     $conn->close();
 }
 
-function update_event($title, $event, $id) {
+function update_event($title, $event, $id, $published) {
     $conn = connect();
 
     // Update event
-    $stmt = $conn->prepare("UPDATE eventos SET titulo = ?, texto = ? WHERE id = ?");
-    $stmt->bind_param("ssi", $title, $event, $id);
+    $stmt = $conn->prepare("UPDATE eventos SET titulo = ?, texto = ?, publicado = ? WHERE id = ?");
+    $stmt->bind_param("ssii", $title, $event, $published, $id);
     $result = $stmt->execute();
 
     $conn->close(); 
@@ -307,7 +307,22 @@ function search_events($query) {
     $conn = connect();
 
     //Search for coincidences
-    $stmt = $conn->prepare("SELECT id, titulo, texto FROM eventos WHERE titulo LIKE CONCAT('%',?,'%') OR texto LIKE CONCAT('%',?,'%')");
+    $stmt = $conn->prepare("SELECT id, titulo, texto, publicado FROM eventos WHERE (titulo LIKE CONCAT('%',?,'%') OR texto LIKE CONCAT('%',?,'%')) AND publicado = 1");
+    $stmt->bind_param("ss", $query, $query);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    $conn->close();
+
+    return $rows;
+}
+
+function search_events_draft($query) {
+    $conn = connect();
+
+    //Search for coincidences
+    $stmt = $conn->prepare("SELECT id, titulo, texto, publicado FROM eventos WHERE titulo LIKE CONCAT('%',?,'%') OR texto LIKE CONCAT('%',?,'%')");
     $stmt->bind_param("ss", $query, $query);
     $stmt->execute();
 
