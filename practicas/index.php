@@ -15,6 +15,9 @@
     if(startsWith($uri, "/portada") || $uri === "/") {
         include("scripts/portada.php");
     }
+    else if(startsWith($uri, "/evento-imprimir")) {
+        include("scripts/evento-imprimir.php");
+    }
     else if(startsWith($uri, "/evento")) {
         include("scripts/evento.php");
     }

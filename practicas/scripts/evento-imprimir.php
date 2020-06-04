@@ -3,7 +3,7 @@
     require 'db.php';
 
     // Event number
-    $resto = substr($uri, 8);
+    $resto = substr($uri, 17);
     $idEvent = intval($resto);
 
     // Event info
